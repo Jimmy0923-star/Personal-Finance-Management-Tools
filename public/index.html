@@ -1,1 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>個人理財管理工具</title>
+    <!-- 引入外部樣式 -->
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- 字體與圖示 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- 頂部導航欄 -->
+    <header>
+        <nav class="navbar">
+            <h1>個人理財管理工具</h1>
+            <ul class="nav-links">
+                <li><a href="#dashboard">財務摘要</a></li>
+                <li><a href="#transactions">交易記錄</a></li>
+                <li><a href="#savings">儲蓄目標</a></li>
+                <li><a href="#settings">設定</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 主內容區 -->
+    <main>
+        <!-- 財務摘要區 -->
+        <section id="dashboard" class="section-dashboard">
+            <h2>財務摘要</h2>
+            <div class="summary">
+                <div class="summary-item">
+                    <p>總收入</p>
+                    <h3>$30,000</h3>
+                </div>
+                <div class="summary-item">
+                    <p>總支出</p>
+                    <h3>$15,000</h3>
+                </div>
+                <div class="summary-item">
+                    <p>餘額</p>
+                    <h3>$15,000</h3>
+                </div>
+            </div>
+            <div class="chart-container">
+                <canvas id="financial-chart"></canvas>
+            </div>
+        </section>
+
+        <!-- 快速功能區 -->
+        <section class="section-shortcuts">
+            <h2>快速功能</h2>
+            <div class="shortcuts">
+                <a href="#transactions" class="shortcut">
+                    <i class="fas fa-list"></i>
+                    <p>檢視交易</p>
+                </a>
+                <a href="#add-transaction" class="shortcut">
+                    <i class="fas fa-plus-circle"></i>
+                    <p>新增交易</p>
+                </a>
+                <a href="#savings" class="shortcut">
+                    <i class="fas fa-piggy-bank"></i>
+                    <p>儲蓄目標</p>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- 頁尾 -->
+    <footer>
+        <p>© 2024 個人理財管理工具 - 由陳冠霖、黃立宏、張予惇、陳泓育團隊開發</p>
+    </footer>
+
+    <!-- 外部腳本 -->
+    <script src="js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // 使用 Chart.js 建立財務摘要圖表
+        const ctx = document.getElementById('financial-chart').getContext('2d');
+        const financialChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['收入', '支出'],
+                datasets: [{
+                    data: [30000, 15000],
+                    backgroundColor: ['#4caf50', '#f44336'],
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
 
