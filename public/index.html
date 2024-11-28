@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>一直記帳 Keep Accounting!</title>
-    <!-- 引入外部樣式 -->
     <link rel="stylesheet" href="css/styles.css">
-    <!-- 字體與圖示 -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
@@ -26,8 +24,8 @@
 
     <!-- 主內容區 -->
     <main>
-        <!-- 財務摘要區 -->
-        <section id="dashboard" class="section-dashboard">
+        <!-- 財務摘要 -->
+        <section id="dashboard">
             <h2>財務摘要</h2>
             <div class="summary">
                 <div class="summary-item">
@@ -43,83 +41,35 @@
                     <h3>$15,000</h3>
                 </div>
             </div>
-            <div class="chart-container">
+            <div>
                 <canvas id="financial-chart"></canvas>
             </div>
         </section>
 
-        <!-- 快速功能區 -->
-        <section class="section-shortcuts">
-            <h2>快速功能</h2>
-            <div class="shortcuts">
-                <a href="#transactions" class="shortcut">
-                    <i class="fas fa-list"></i>
-                    <p>檢視交易</p>
-                </a>
-                <a href="#add-transaction" class="shortcut">
-                    <i class="fas fa-plus-circle"></i>
-                    <p>新增交易</p>
-                </a>
-                <a href="#savings" class="shortcut">
-                    <i class="fas fa-piggy-bank"></i>
-                    <p>儲蓄目標</p>
-                </a>
-            </div>
+        <!-- 新增交易 -->
+        <section id="transactions">
+            <h2>新增交易</h2>
+            <form id="add-transaction-form">
+                <select id="transaction-type">
+                    <option value="income">收入</option>
+                    <option value="expense">支出</option>
+                </select>
+                <input type="text" id="transaction-description" placeholder="描述">
+                <input type="number" id="transaction-amount" placeholder="金額">
+                <button type="submit">新增交易</button>
+            </form>
+            <ul id="transaction-list"></ul>
         </section>
     </main>
 
     <!-- 頁尾 -->
     <footer>
-        <p>© 2024 一直記帳 - 由歐拉拉團隊開發</p>
+        <p>© 2024 一直記帳</p>
     </footer>
 
-    <!-- 外部腳本 -->
     <script src="js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-        // 使用 Chart.js 建立財務摘要圖表
-        const ctx = document.getElementById('financial-chart').getContext('2d');
-        const financialChart = new Chart(ctx, {
-            type: 'doughnut',
-            data: {
-                labels: ['收入', '支出'],
-                datasets: [{
-                    data: [30000, 15000],
-                    backgroundColor: ['#4caf50', '#f44336'],
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        position: 'bottom',
-                    }
-                }
-            }
-        });
-    </script>
-
-    <!-- 新增交易表單 -->
-<form id="add-transaction-form">
-    <select id="transaction-type">
-        <option value="income">收入</option>
-        <option value="expense">支出</option>
-    </select>
-    <input type="text" id="transaction-description" placeholder="描述">
-    <input type="number" id="transaction-amount" placeholder="金額">
-    <button type="submit">新增交易</button>
-</form>
-
-<!-- 交易列表 -->
-<ul id="transaction-list"></ul>
-
-<!-- 摘要區域 -->
-<div>
-    <h3>收入：<span id="income-display">$0.00</span></h3>
-    <h3>支出：<span id="expense-display">$0.00</span></h3>
-    <h3>餘額：<span id="balance-display">$0.00</span></h3>
-</div>
-
 </body>
 </html>
+
 
