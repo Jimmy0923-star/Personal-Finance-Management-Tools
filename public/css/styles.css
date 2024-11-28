@@ -5,6 +5,13 @@
     box-sizing: border-box;
 }
 
+body {
+    font-family: 'Noto Sans TC', sans-serif;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
 #dynamic-background {
     position: absolute;
     top: 0;
@@ -14,13 +21,6 @@
     z-index: -1; /* 背景層 */
 }
 
-
-body {
-    font-family: 'Noto Sans TC', sans-serif;
-    line-height: 1.6;
-    background-color: #f9f9f9;
-    color: #333;
-}
 
 a {
     text-decoration: none;
