@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一直記帳 Keep Accounting!</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- 頂部導航欄 -->
+    <header>
+        <nav class="navbar">
+            <h1>一直記帳</h1>
+            <ul class="nav-links">
+                <li><a href="#dashboard">財務摘要</a></li>
+                <li><a href="#transactions">交易記錄</a></li>
+                <li><a href="#savings">儲蓄目標</a></li>
+                <li><a href="#settings">設定</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 主內容區 -->
+    <main>
+        <!-- 財務摘要 -->
+        <section id="dashboard">
+            <h2>財務摘要</h2>
+            <div class="summary">
+                <div class="summary-item">
+                    <p>總收入</p>
+                    <h3>$30,000</h3>
+                </div>
+                <div class="summary-item">
+                    <p>總支出</p>
+                    <h3>$15,000</h3>
+                </div>
+                <div class="summary-item">
+                    <p>餘額</p>
+                    <h3>$15,000</h3>
+                </div>
+            </div>
+            <div>
+                <canvas id="financial-chart"></canvas>
+            </div>
+        </section>
+
+        <!-- 新增交易 -->
+        <section id="transactions">
+            <h2>新增交易</h2>
+            <form id="add-transaction-form">
+                <select id="transaction-type">
+                    <option value="income">收入</option>
+                    <option value="expense">支出</option>
+                </select>
+                <input type="text" id="transaction-description" placeholder="描述">
+                <input type="number" id="transaction-amount" placeholder="金額">
+                <button type="submit">新增交易</button>
+            </form>
+            <ul id="transaction-list"></ul>
+        </section>
+    </main>
+
+    <!-- 頁尾 -->
+    <footer>
+        <p>© 2024 一直記帳</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+</html>
+
