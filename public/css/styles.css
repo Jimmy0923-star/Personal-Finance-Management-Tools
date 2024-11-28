@@ -10,6 +10,7 @@ body {
     line-height: 1.6;
     /* background-color: #f9f9f9; */
     color: #333;
+    overflow: hidden; /* 防止出現滾動條 */
 }
 
 #dynamic-background {
