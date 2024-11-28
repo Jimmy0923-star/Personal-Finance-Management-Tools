@@ -98,6 +98,28 @@
             }
         });
     </script>
+
+    <!-- 新增交易表單 -->
+<form id="add-transaction-form">
+    <select id="transaction-type">
+        <option value="income">收入</option>
+        <option value="expense">支出</option>
+    </select>
+    <input type="text" id="transaction-description" placeholder="描述">
+    <input type="number" id="transaction-amount" placeholder="金額">
+    <button type="submit">新增交易</button>
+</form>
+
+<!-- 交易列表 -->
+<ul id="transaction-list"></ul>
+
+<!-- 摘要區域 -->
+<div>
+    <h3>收入：<span id="income-display">$0.00</span></h3>
+    <h3>支出：<span id="expense-display">$0.00</span></h3>
+    <h3>餘額：<span id="balance-display">$0.00</span></h3>
+</div>
+
 </body>
 </html>
 
