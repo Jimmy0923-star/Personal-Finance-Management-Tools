@@ -20,10 +20,23 @@
             background-color: #f4f4f9;
         }
 
+        /* 頂部標題樣式 */
+        .site-title {
+            width: 100%;
+            background: linear-gradient(135deg, #4caf50, #8bc34a);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            font-size: 2rem;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 導航欄樣式 */
         header {
             width: 100%;
-            background-color: #4caf50;
-            padding: 1rem 0;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         .navbar {
@@ -31,11 +44,7 @@
             justify-content: center;
             align-items: center;
             flex-wrap: wrap;
-        }
-
-        .navbar h1 {
-            color: white;
-            margin-right: 2rem;
+            padding: 1rem 0;
         }
 
         .nav-links {
@@ -46,13 +55,17 @@
         }
 
         .nav-links li {
-            margin: 0 1rem;
+            margin: 0 1.5rem;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: white;
+            color: #333;
             font-weight: bold;
+        }
+
+        .nav-links a:hover {
+            color: #4caf50;
         }
 
         /* 主要內容 */
@@ -116,10 +129,14 @@
     </style>
 </head>
 <body>
+    <!-- 頂部標題 -->
+    <div class="site-title">
+        一直記帳 Keep Accounting!
+    </div>
+
     <!-- 頂部導航欄 -->
     <header>
         <nav class="navbar">
-            <h1>一直記帳</h1>
             <ul class="nav-links">
                 <li><a href="#dashboard">財務摘要</a></li>
                 <li><a href="#transactions">交易記錄</a></li>
@@ -178,5 +195,6 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 </html>
+
 
 
