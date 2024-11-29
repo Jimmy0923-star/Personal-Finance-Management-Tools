@@ -7,43 +7,6 @@ const transactionList = document.querySelector('#transaction-list');
 const incomeDisplay = document.querySelector('#income-display');
 const expenseDisplay = document.querySelector('#expense-display');
 const balanceDisplay = document.querySelector('#balance-display');
-const canvas = document.getElementById('dynamic-background');
-const ctx = canvas.getContext('2d');
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-window.onload = function () {
-    const canvas = document.getElementById('dynamic-background');
-    const ctx = canvas.getContext('2d');
-
-    function resizeCanvas() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    }
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-
-    // 簡化的動畫星星背景測試
-    const stars = Array.from({ length: 100 }, () => ({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        radius: Math.random() * 2,
-    }));
-
-    function drawStars() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        stars.forEach(star => {
-            ctx.beginPath();
-            ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-            ctx.fillStyle = '#fff';
-            ctx.fill();
-        });
-        requestAnimationFrame(drawStars);
-    }
-    drawStars();
-};
-
 
 
 
