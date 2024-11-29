@@ -8,19 +8,12 @@
 body {
     font-family: 'Noto Sans TC', sans-serif;
     line-height: 1.6;
-    /* background-color: #f9f9f9; */
+    background-color: #f9f9f9;
     color: #333;
-    overflow: hidden; /* 防止出現滾動條 */
-}
-
-#dynamic-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
    
 }
+
+
 
 
 a {
