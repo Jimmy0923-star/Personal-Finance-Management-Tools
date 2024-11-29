@@ -17,40 +17,33 @@ window.onload = function () {
     const canvas = document.getElementById('dynamic-background');
     const ctx = canvas.getContext('2d');
 
-   canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
 
-let stars = [];
-for (let i = 0; i < 100; i++) {
-    stars.push({
+    // 簡化的動畫星星背景測試
+    const stars = Array.from({ length: 100 }, () => ({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
         radius: Math.random() * 2,
-        dx: (Math.random() - 0.5) * 0.5,
-        dy: (Math.random() - 0.5) * 0.5
-    });
-}
+    }));
 
-function drawStars() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    for (let star of stars) {
-        ctx.beginPath();
-        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-        ctx.fillStyle = '#fff';
-        ctx.fill();
-
-        // 更新星星位置
-        star.x += star.dx;
-        star.y += star.dy;
-
-        // 讓星星在邊界反彈
-        if (star.x < 0 || star.x > canvas.width) star.dx *= -1;
-        if (star.y < 0 || star.y > canvas.height) star.dy *= -1;
+    function drawStars() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        stars.forEach(star => {
+            ctx.beginPath();
+            ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+            ctx.fillStyle = '#fff';
+            ctx.fill();
+        });
+        requestAnimationFrame(drawStars);
     }
-    requestAnimationFrame(drawStars);
-}
+    drawStars();
+};
 
-drawStars();
 
 
 
