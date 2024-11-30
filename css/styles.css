@@ -234,6 +234,30 @@ header {
     color: #fff;
 }
 
+
+/* 設定頁面樣式 */
+.section-settings {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+#logout-button {
+    padding: 0.5rem 1rem;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+#logout-button:hover {
+    background-color: #e53935;
+}
+
+
 /* 頁尾 */
 footer {
     background-color: #4caf50;
