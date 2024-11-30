@@ -48,7 +48,7 @@
 
 /* 前往註冊按鈕樣式 */
 #switch-button a {
-     color: #1e90ff; /* 藍色文字 */
+     color: #1e90ff;
     font-weight: bold;
     text-decoration: none;
     padding: 0.5rem 1rem;
