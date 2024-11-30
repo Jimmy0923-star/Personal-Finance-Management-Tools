@@ -3,6 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一直記帳 - 登入</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div id="login-container">
+        <h1>一直記帳 - 登入</h1>
+        <form id="login-form">
+            <label for="username">帳號：</label>
+            <input type="text" id="username" placeholder="輸入帳號" required>
+
+            <label for="password">密碼：</label>
+            <input type="password" id="password" placeholder="輸入密碼" required>
+
+            <button type="submit">登入</button>
+        </form>
+        <p id="error-message" style="display: none; color: red;">帳號或密碼錯誤，請再試一次！</p>
+    </div>
+
+    <script src="js/login.js"></script>
+</body>
+</html>
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>一直記帳 Keep Accounting!</title>
     <link rel="stylesheet" href="css/styles.css">
     
