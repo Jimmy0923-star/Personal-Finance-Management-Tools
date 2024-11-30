@@ -48,12 +48,9 @@
 
 /* 前往註冊按鈕樣式 */
 #switch-button a {
-     color: #1e90ff;
-    font-weight: bold;
+    color: #1e90ff;
     text-decoration: none;
-    padding: 0.5rem 1rem;
-    display: inline-block;
-    transition: background-color 0.3s, color 0.3s;
+    font-weight: bold;
 }
 
 #switch-button a:hover {
