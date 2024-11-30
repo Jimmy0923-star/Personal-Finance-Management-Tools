@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一直記帳 - 註冊</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Noto Sans TC', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #f4f4f9;
+        }
+
+        #register-container {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        #register-container h1 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #4caf50;
+        }
+
+        #register-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        #register-form label {
+            font-weight: bold;
+        }
+
+        #register-form input {
+            padding: 0.7rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+            width: 100%;
+        }
+
+        #register-form button {
+            padding: 0.7rem;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        #register-form button:hover {
+            background-color: #45a049;
+        }
+
+        #error-message {
+            display: none;
+            color: red;
+        }
+
+        #login-link {
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        #login-link a {
+            color: #4caf50;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        #login-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div id="register-container">
+        <h1>一直記帳 - 註冊</h1>
+        <form id="register-form">
+            <label for="username">帳號：</label>
+            <input type="text" id="username" placeholder="輸入帳號" required>
+
+            <label for="email">電子郵件：</label>
+            <input type="email" id="email" placeholder="輸入電子郵件" required>
+
+            <label for="password">密碼：</label>
+            <input type="password" id="password" placeholder="輸入密碼" required>
+
+            <label for="confirm-password">確認密碼：</label>
+            <input type="password" id="confirm-password" placeholder="再次輸入密碼" required>
+
+            <button type="submit">註冊</button>
+        </form>
+        <p id="error-message">密碼不一致，請再試一次！</p>
+        <div id="login-link">
+            已有帳號？<a href="login.html">登入</a>
+        </div>
+    </div>
+
+    <script src="js/register.js"></script>
+</body>
+</html>
