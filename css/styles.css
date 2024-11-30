@@ -48,13 +48,12 @@
 
 /* 前往註冊按鈕樣式 */
 #switch-button a {
-    padding: 0.7rem;
-    background-color: #1e90ff; ;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    cursor: pointer;
+     color: #1e90ff; /* 藍色文字 */
+    font-weight: bold;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    display: inline-block;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 #switch-button a:hover {
