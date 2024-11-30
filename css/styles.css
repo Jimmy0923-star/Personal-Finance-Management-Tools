@@ -52,8 +52,6 @@
     font-weight: bold;
     text-decoration: none;
     padding: 0.5rem 1rem;
-    border: 2px solid #1e90ff; /* 藍色邊框 */
-    border-radius: 5px;
     display: inline-block;
     transition: background-color 0.3s, color 0.3s;
 }
