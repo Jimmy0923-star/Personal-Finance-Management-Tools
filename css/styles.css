@@ -277,6 +277,20 @@ header {
     background-color: #e53935;
 }
 
+/* 儲蓄目標樣式 */
+#savings {
+    text-align: center;
+}
+
+#progress-bar {
+    margin: 1rem 0;
+}
+
+#add-savings-form {
+    margin-top: 1rem;
+}
+
+
 
 /* 頁尾 */
 footer {
