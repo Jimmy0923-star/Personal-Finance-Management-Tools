@@ -149,3 +149,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+
+document.addEventListener("DOMContentLoaded", () => {
+    const logoutButton = document.getElementById("logout-button");
+
+    logoutButton.addEventListener("click", () => {
+        // 清除用戶相關資料（如果有使用 LocalStorage，可以清除）
+        localStorage.clear();
+
+        // 跳轉回登入頁面
+        window.location.href = "index.html";
+    });
+});
+
