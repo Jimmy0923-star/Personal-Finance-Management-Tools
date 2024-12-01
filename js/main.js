@@ -162,3 +162,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+
+logoutButton.addEventListener("click", () => {
+    if (confirm("您確定要登出嗎？")) {
+        localStorage.clear();
+        window.location.href = "index.html";
+    }
+});
+
