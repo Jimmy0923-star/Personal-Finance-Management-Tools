@@ -43,6 +43,12 @@
     <!-- 右側新增支出表單 -->
     <section id="expense-form">
       <h2>新增/更新支出</h2>
+      <form id="add-transaction-form">
+  <label for="type">交易類型：</label>
+  <select id="type" required>
+    <option value="income">收入</option>
+    <option value="expense">支出</option>
+  </select>
       <form id="add-expense-form">
         <label for="date">日期：</label>
         <input type="date" id="date" required>
