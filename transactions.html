@@ -5,7 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title></title>
     <link rel="stylesheet" href="css/tran_styles.css">
+     <style>
+         form {
+            margin-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        form input, form select, form button {
+            padding: 0.5rem;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* 頁尾 */
+        footer {
+            margin-top: auto;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            width: 100%;
+        }
+    </style>
 </head>
+   
 <body>
     <header>
         <nav class="navbar">
@@ -40,5 +77,6 @@
     </footer>
 
     <script src="js/main.js"></script> <!-- 獨立的交易紀錄 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 </html>
