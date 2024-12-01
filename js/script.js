@@ -1,43 +1,34 @@
-// 初始化支出資料
-let expenses = JSON.parse(localStorage.getItem('expenses')) || [];
+// 初始化交易資料
+let transactions = JSON.parse(localStorage.getItem('transactions')) || [];
 let currentPage = 1;
 const itemsPerPage = 5;
 
 // 更新 LocalStorage
 function updateLocalStorage() {
-  localStorage.setItem('expenses', JSON.stringify(expenses));
+  localStorage.setItem('transactions', JSON.stringify(transactions));
 }
 
-// 排序支出資料
-function sortExpensesByDate(order = 'asc') {
-  expenses.sort((a, b) => {
-    const dateA = new Date(a.date);
-    const dateB = new Date(b.date);
-    return order === 'asc' ? dateA - dateB : dateB - dateA;
-  });
-}
-
-// 渲染支出列表
-function renderExpenses(order = 'asc') {
-  // 排序支出資料
-  sortExpensesByDate(order);
+// 渲染交易列表
+function renderTransactions(order = 'asc') {
+  transactions.sort((a, b) => new Date(a.date) - new Date(b.date));
+  if (order === 'desc') transactions.reverse();
 
   const start = (currentPage - 1) * itemsPerPage;
   const end = start + itemsPerPage;
-  const pageData = expenses.slice(start, end);
+  const pageData = transactions.slice(start, end);
 
-  const tbody = document.getElementById('expense-table-body');
+  const tbody = document.getElementById('transaction-table-body');
   tbody.innerHTML = '';
-  pageData.forEach(expense => {
+  pageData.forEach(transaction => {
     const row = `
       <tr>
-        <td>${expense.date}</td>
-        <td>${expense.amount}</td>
-        <td>${expense.category}</td>
-        <td>${expense.description}</td>
+        <td>${transaction.date}</td>
+        <td>${transaction.type === 'income' ? '+' : '-'}${transaction.amount}</td>
+        <td>${transaction.category}</td>
+        <td>${transaction.description}</td>
         <td>
-          <button onclick="editExpense(${expense.id})">編輯</button>
-          <button onclick="deleteExpense(${expense.id})">刪除</button>
+          <button onclick="editTransaction(${transaction.id})">編輯</button>
+          <button onclick="deleteTransaction(${transaction.id})">刪除</button>
         </td>
       </tr>
     `;
@@ -45,78 +36,61 @@ function renderExpenses(order = 'asc') {
   });
 
   renderPagination();
+  calculateTotals(); // 更新總額
 }
 
-// 渲染分頁按鈕
-function renderPagination() {
-  const totalPages = Math.ceil(expenses.length / itemsPerPage);
-  const paginationDiv = document.getElementById('pagination');
-  paginationDiv.innerHTML = '';
-
-  for (let i = 1; i <= totalPages; i++) {
-    const button = document.createElement('button');
-    button.textContent = i;
-    button.addEventListener('click', () => {
-      currentPage = i;
-      renderExpenses();
-    });
-    paginationDiv.appendChild(button);
-  }
-}
-
-// 新增/更新支出
-document.getElementById('add-expense-form').addEventListener('submit', (e) => {
+// 新增/更新交易
+document.getElementById('add-transaction-form').addEventListener('submit', (e) => {
   e.preventDefault();
 
+  const type = document.getElementById('type').value;
   const date = document.getElementById('date').value;
   const amount = parseFloat(document.getElementById('amount').value);
   const category = document.getElementById('category').value;
   const description = document.getElementById('description').value;
 
-  const newExpense = { id: Date.now(), date, amount, category, description };
+  const newTransaction = { id: Date.now(), type, date, amount, category, description };
 
   if (isEditing) {
-    const index = expenses.findIndex(exp => exp.id === editingId);
-    expenses[index] = newExpense;
+    const index = transactions.findIndex(txn => txn.id === editingId);
+    transactions[index] = newTransaction;
     isEditing = false;
   } else {
-    expenses.push(newExpense);
+    transactions.push(newTransaction);
   }
 
   updateLocalStorage();
-  renderExpenses();
+  renderTransactions();
   updateChart();
-  calculateTotalExpense(); // 更新總支出
   e.target.reset();
 });
 
-// 編輯支出
-let isEditing = false;
-let editingId = null;
+// 計算總收入、總支出與淨額
+function calculateTotals() {
+  const totalIncome = transactions
+    .filter(txn => txn.type === 'income')
+    .reduce((sum, txn) => sum + txn.amount, 0);
+  const totalExpense = transactions
+    .filter(txn => txn.type === 'expense')
+    .reduce((sum, txn) => sum + txn.amount, 0);
+  const netAmount = totalIncome - totalExpense;
 
-function editExpense(id) {
-  const expense = expenses.find(exp => exp.id === id);
-  document.getElementById('date').value = expense.date;
-  document.getElementById('amount').value = expense.amount;
-  document.getElementById('category').value = expense.category;
-  document.getElementById('description').value = expense.description;
-
-  isEditing = true;
-  editingId = id;
-}
-
-// 刪除支出
-function deleteExpense(id) {
-  expenses = expenses.filter(exp => exp.id !== id);
-  updateLocalStorage();
-  renderExpenses();
-  updateChart();
-  calculateTotalExpense(); // 初始化總支出
+  document.getElementById('total-income').textContent = totalIncome.toFixed(2);
+  document.getElementById('total-expense').textContent = totalExpense.toFixed(2);
+  document.getElementById('net-amount').textContent = netAmount.toFixed(2);
 }
 
 // 繪製圓餅圖
-function drawPieChart(data) {
-  const canvas = document.getElementById('expense-chart');
+function updateChart() {
+  const incomeData = transactions.filter(txn => txn.type === 'income');
+  const expenseData = transactions.filter(txn => txn.type === 'expense');
+
+  drawPieChart(incomeData, 'income-chart');
+  drawPieChart(expenseData, 'expense-chart');
+}
+
+function drawPieChart(data, chartId) {
+  const canvas = document.getElementById(chartId);
   const ctx = canvas.getContext('2d');
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -125,7 +99,7 @@ function drawPieChart(data) {
     ctx.fillStyle = '#000';
     ctx.font = '16px Arial';
     ctx.textAlign = 'center';
-    ctx.fillText('沒有支出數據', canvas.width / 2, canvas.height / 2);
+    ctx.fillText('無數據', canvas.width / 2, canvas.height / 2);
     return;
   }
 
@@ -160,22 +134,8 @@ function drawPieChart(data) {
   });
 }
 
-// 更新圖表
-function updateChart() {
-  drawPieChart(expenses);
-}
-// 計算總支出並更新顯示
-function calculateTotalExpense() {
-    const totalExpense = expenses.reduce((sum, item) => sum + item.amount, 0);
-    document.getElementById('total-expense').textContent = totalExpense.toFixed(2); // 顯示兩位小數
-  }
 // 初始化頁面
 document.addEventListener('DOMContentLoaded', () => {
-  renderExpenses();
+  renderTransactions();
   updateChart();
-  calculateTotalExpense(); // 初始化總支出
 });
-
-// 排序按鈕
-document.getElementById('sort-date-asc').addEventListener('click', () => renderExpenses('asc'));
-document.getElementById('sort-date-desc').addEventListener('click', () => renderExpenses('desc'));
