@@ -13,17 +13,33 @@ document.addEventListener("DOMContentLoaded", () => {
     const balanceDisplay = document.querySelector('#balance-display');
 
     // 新增交易
-    addTransactionForm.addEventListener('submit', (e) => {
-        e.preventDefault();
+    function addTransaction(e) {
+    e.preventDefault();
 
-        const type = transactionType.value;
-        const description = transactionDescription.value.trim();
-        const amount = parseFloat(transactionAmount.value);
+    const type = transactionType.value;
+    const description = transactionDescription.value.trim();
+    const amount = parseFloat(transactionAmount.value);
 
-        if (!description || isNaN(amount) || amount <= 0) {
-            alert("請輸入有效的描述和金額！");
-            return;
-        }
+    if (description === '' || isNaN(amount) || amount <= 0) {
+        alert('請輸入有效的描述和金額！');
+        return;
+    }
+
+    const transaction = {
+        id: Date.now(),
+        type,
+        description,
+        amount
+    };
+
+    transactions.push(transaction);
+    localStorage.setItem('transactions', JSON.stringify(transactions)); // 儲存至 LocalStorage
+
+    renderTransactions();
+    updateSummary();
+    addTransactionForm.reset();
+}
+
 
         const transaction = {
             id: Date.now(),
