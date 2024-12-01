@@ -4,7 +4,11 @@
     <option value="income">收入</option>
     <option value="expense">支出</option>
   </select>
- <table>
+ <main>
+    <!-- 左側支出列表 -->
+    <aside id="expense-list">
+      <h2>支出列表</h2>
+      <table>
         <thead>
           <tr>
             <th>
@@ -22,12 +26,12 @@
           <!-- 支出資料將由 JavaScript 動態填充 -->
         </tbody>
       </table>
+      <div id="pagination">
+        <!-- 分頁按鈕由 JavaScript 動態生成 -->
+      </div>
+    </aside>
 
-  <label for="description">說明：</label>
-  <input type="text" id="description">
 
-  <button type="submit">新增/更新交易</button>
-</form>
 
   <!-- 下方圖表區域 -->
   <footer>
