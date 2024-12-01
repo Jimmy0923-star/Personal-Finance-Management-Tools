@@ -19,6 +19,21 @@
         <h2>交易紀錄</h2>
         <ul id="transaction-list"></ul> <!-- 用於顯示交易清單 -->
     </main>
+     <!-- 新增交易 -->
+        <section id="transactions">
+            <h2>新增交易</h2>
+            <form id="add-transaction-form">
+                <select id="transaction-type">
+                    <option value="income">收入</option>
+                    <option value="expense">支出</option>
+                </select>
+                <input type="text" id="transaction-description" placeholder="描述">
+                <input type="number" id="transaction-amount" placeholder="金額">
+                <button type="submit">新增交易</button>
+            </form>
+            <ul id="transaction-list"></ul>
+        </section>
+
 
     <footer>
         <p>© 2024 一直記帳</p>
