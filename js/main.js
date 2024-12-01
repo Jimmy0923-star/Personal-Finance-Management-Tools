@@ -12,6 +12,32 @@ document.addEventListener("DOMContentLoaded", () => {
     const expenseDisplay = document.querySelector('#expense-display');
     const balanceDisplay = document.querySelector('#balance-display');
 
+
+    document.addEventListener('DOMContentLoaded', () => {
+    // 取得所有按鈕
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const sections = document.querySelectorAll('main section');
+
+    // 隱藏所有區域
+    const hideAllSections = () => {
+        sections.forEach(section => {
+            section.classList.remove('visible');
+            section.classList.add('hidden');
+        });
+    };
+
+    // 處理導航按鈕點擊事件
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            const sectionId = link.getAttribute('data-section');
+            hideAllSections(); // 隱藏其他區域
+            document.getElementById(sectionId).classList.remove('hidden');
+            document.getElementById(sectionId).classList.add('visible');
+        });
+    });
+});
+
+
     // 新增交易
     function addTransaction(e) {
     e.preventDefault();
