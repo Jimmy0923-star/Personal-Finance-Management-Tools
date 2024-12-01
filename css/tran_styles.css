@@ -1,0 +1,25 @@
+/* 交易列表樣式 */
+#transaction-list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+}
+
+#transaction-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.income-item {
+    border-left: 5px solid #4caf50;
+}
+
+.expense-item {
+    border-left: 5px solid #f44336;
+}
