@@ -1,70 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>支出紀錄</title>
-  <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-  <header>
-    <nav>
-      <h1>支出記錄</h1>
-     
-    </nav>
-  </header>
-  <main>
-    <!-- 左側支出列表 -->
-    <aside id="expense-list">
-      <h2>支出列表</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>
-              日期 
-              <button id="sort-date-asc">▲</button>
-              <button id="sort-date-desc">▼</button>
-            </th>
-            <th>金額</th>
-            <th>類別</th>
-            <th>說明</th>
-            <th>操作</th>
-          </tr>
-        </thead>
-        <tbody id="expense-table-body">
-          <!-- 支出資料將由 JavaScript 動態填充 -->
-        </tbody>
-      </table>
-      <div id="pagination">
-        <!-- 分頁按鈕由 JavaScript 動態生成 -->
-      </div>
-    </aside>
+<form id="add-transaction-form">
+  <label for="type">交易類型：</label>
+  <select id="type" required>
+    <option value="income">收入</option>
+    <option value="expense">支出</option>
+  </select>
 
-    <!-- 右側新增支出表單 -->
-    <section id="expense-form">
-      <h2>新增/更新支出</h2>
-      <form id="add-expense-form">
-        <label for="date">日期：</label>
-        <input type="date" id="date" required>
-        
-        <label for="amount">金額：</label>
-        <input type="number" id="amount" required>
-        
-        <label for="category">類別：</label>
-        <select id="category" required>
-          <option value="food">飲食</option>
-          <option value="transport">交通</option>
-          <option value="entertainment">娛樂</option>
-          <option value="other">其他</option>
-        </select>
-        
-        <label for="description">說明：</label>
-        <input type="text" id="description">
-        
-        <button type="submit">新增/更新支出</button>
-      </form>
-    </section>
-  </main>
+  <label for="date">日期：</label>
+  <input type="date" id="date" required>
+
+  <label for="amount">金額：</label>
+  <input type="number" id="amount" required>
+
+  <label for="category">類別：</label>
+  <select id="category" required>
+    <option value="salary">薪資</option>
+    <option value="investment">投資</option>
+    <option value="food">飲食</option>
+    <option value="transport">交通</option>
+    <option value="entertainment">娛樂</option>
+    <option value="other">其他</option>
+  </select>
+
+  <label for="description">說明：</label>
+  <input type="text" id="description">
+
+  <button type="submit">新增/更新交易</button>
+</form>
 
   <!-- 下方圖表區域 -->
   <footer>
