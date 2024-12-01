@@ -101,3 +101,51 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 });
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    let goalAmount = 0; // 儲蓄目標金額
+    let currentSavings = 0; // 已儲蓄金額
+
+    const goalForm = document.getElementById('savings-form');
+    const goalDisplay = document.getElementById('goal-display');
+    const currentSavingsDisplay = document.getElementById('current-savings');
+    const progressContainer = document.getElementById('progress-container');
+    const progressBar = document.getElementById('progress');
+    const addSavingsForm = document.getElementById('add-savings-form');
+
+    // 設定儲蓄目標
+    goalForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        goalAmount = parseFloat(document.getElementById('goal-amount').value);
+        if (goalAmount > 0) {
+            goalDisplay.textContent = `$${goalAmount.toFixed(2)}`;
+            progressContainer.classList.remove('hidden'); // 顯示進度條
+            updateProgress();
+        }
+    });
+
+    // 新增儲蓄金額
+    addSavingsForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const savingsAmount = parseFloat(document.getElementById('savings-amount').value);
+        if (savingsAmount > 0) {
+            currentSavings += savingsAmount;
+            updateProgress();
+        }
+        document.getElementById('savings-amount').value = ''; // 清空輸入欄
+    });
+
+    // 更新進度條與金額顯示
+    function updateProgress() {
+        currentSavingsDisplay.textContent = `$${currentSavings.toFixed(2)}`;
+        const progressPercentage = Math.min((currentSavings / goalAmount) * 100, 100); // 確保不超過 100%
+        progressBar.style.width = `${progressPercentage}%`;
+
+        // 可選：達成目標時給提示
+        if (progressPercentage >= 100) {
+            alert('恭喜！您已達成儲蓄目標！');
+        }
+    }
+});
+
