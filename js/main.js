@@ -162,6 +162,5 @@ document.addEventListener("DOMContentLoaded", () => {
     window.location.href = "/login"; // 調整為您的登入頁面路徑
   });
 });
-});
 
 
