@@ -1,10 +1,19 @@
-<form id="add-transaction-form">
-  <label for="type">交易類型：</label>
-  <select id="type" required>
-    <option value="income">收入</option>
-    <option value="expense">支出</option>
-  </select>
- <main>
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>支出紀錄</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <h1>支出記錄</h1>
+     
+    </nav>
+  </header>
+  <main>
     <!-- 左側支出列表 -->
     <aside id="expense-list">
       <h2>支出列表</h2>
@@ -30,7 +39,9 @@
         <!-- 分頁按鈕由 JavaScript 動態生成 -->
       </div>
     </aside>
-   <section id="expense-form">
+
+    <!-- 右側新增支出表單 -->
+    <section id="expense-form">
       <h2>新增/更新支出</h2>
       <form id="add-expense-form">
         <label for="date">日期：</label>
@@ -55,8 +66,6 @@
     </section>
   </main>
 
-
-
   <!-- 下方圖表區域 -->
   <footer>
     <section id="charts">
@@ -71,6 +80,6 @@
         </nav>
   </footer>
 
-  <script src="js/script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
