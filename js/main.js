@@ -151,15 +151,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 document.addEventListener("DOMContentLoaded", () => {
-    const logoutButton = document.getElementById("logout-button");
+  const logoutButton = document.getElementById("logout-button");
 
-    logoutButton.addEventListener("click", () => {
-        // 清除用戶相關資料（如果有使用 LocalStorage，可以清除）
-        localStorage.clear();
+  logoutButton.addEventListener("click", () => {
+    // 清除特定 key 的 localStorage
+    localStorage.removeItem('userToken'); // 假設您儲存了 userToken
+    localStorage.removeItem('userData'); // 假設您儲存了 userData
 
-        // 跳轉回登入頁面
-        window.location.href = "index.html";
-    });
+    // 重新導向到登入頁面
+    window.location.href = "/login"; // 調整為您的登入頁面路徑
+  });
+});
 });
 
 
