@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const balanceDisplay = document.querySelector('#balance-display');
 
 
-    
+
 
 
     // 新增交易
@@ -100,6 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
             updateSummary();
         }
     };
+});
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -147,19 +148,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
-
-
-document.addEventListener("DOMContentLoaded", () => {
-  const logoutButton = document.getElementById("logout-button");
-
-  logoutButton.addEventListener("click", () => {
-    // 清除特定 key 的 localStorage
-    localStorage.removeItem('userToken'); // 假設您儲存了 userToken
-    localStorage.removeItem('userData'); // 假設您儲存了 userData
-
-    // 重新導向到登入頁面
-    window.location.href = "/login"; // 調整為您的登入頁面路徑
-  });
+logoutButton.addEventListener("click", () => {
+    if (confirm("您確定要登出嗎？")) {
+        localStorage.clear();
+        window.location.href = "index.html";
+    }
 });
-
-
