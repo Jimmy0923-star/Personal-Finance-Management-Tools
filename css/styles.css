@@ -279,7 +279,7 @@ header {
 
 /* 儲蓄目標樣式 */
 #savings {
-    color: #C4E1E1;
+    color: white;
     text-align: center;
 }
 
@@ -288,7 +288,7 @@ header {
 }
 
 #add-savings-form {
-    color: #C4E1E1;
+    color: white;
     margin-top: 1rem;
 }
 
