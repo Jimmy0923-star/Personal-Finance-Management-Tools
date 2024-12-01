@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>儲蓄目標</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<section id="savings" class="hidden">
+  <h1>儲蓄目標</h1>
+  <form id="savings-form">
+      <label for="goal-amount">設定目標金額：</label>
+      <input type="number" id="goal-amount" placeholder="輸入目標金額" required>
+      <button type="submit">設定目標</button>
+  </form>
+
+  <div id="progress-container" class="hidden">
+      <p>目標金額：<span id="goal-display">$0</span></p>
+      <p>目前儲蓄：<span id="current-savings">$0</span></p>
+      <div id="progress-bar" style="background: #ccc; width: 100%; height: 20px; border-radius: 5px; overflow: hidden;">
+          <div id="progress" style="background: #4caf50; width: 0%; height: 100%;"></div>
+      </div>
+      <form id="add-savings-form">
+          <input type="number" id="savings-amount" placeholder="儲蓄金額" required>
+          <button type="submit">新增儲蓄</button>
+      </form>
+  </div>
+</section>
+<body>
+    <header>
+        <nav class="navbar">
+            <ul class="nav-links">
+                <li><a href="index.html">返回主頁</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>交易紀錄</h2>
+        <ul id="transaction-list"></ul> <!-- 用於顯示交易清單 -->
+    </main>
+
+    <footer>
+        <p>© 2024 一直記帳</p>
+    </footer>
+
+    <script src="js/target.js"></script> <!-- 獨立的交易紀錄 JS -->
+</body>
+  
+</html>
