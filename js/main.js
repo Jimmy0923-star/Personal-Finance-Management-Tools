@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
             updateSummary();
         }
     };
-});
+);
 
 
 document.addEventListener('DOMContentLoaded', () => {
