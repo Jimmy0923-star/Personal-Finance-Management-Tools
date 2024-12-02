@@ -303,6 +303,9 @@ footer {
     margin-top: 20px;
     font-size: 0.9rem;
 }
+#logout-link {
+  color: white;
+}
 
 footer p {
     margin: 0;
